@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"strconv"
 	"time"
 
 	"github.com/alvinarthas/bobobox-hotelbooking-test/config"
@@ -25,6 +26,7 @@ func SearchHotel(c *gin.Context) {
 	format := "2006-01-02"
 	checkIn, _ := time.Parse(format, c.PostForm("check_in"))
 	checkOut, _ := time.Parse(format, c.PostForm("check_out"))
+	guest, _ := strconv.Atoi(c.PostForm("guest"))
 
 	// Prepare Variables
 	types := []models.Type{}
@@ -32,7 +34,7 @@ func SearchHotel(c *gin.Context) {
 	data := []Data{}
 
 	// Get all Types
-	if config.DB.Find(&types).RecordNotFound() {
+	if config.DB.Where("max_people >= ?", guest).Find(&types).RecordNotFound() {
 		c.JSON(404, gin.H{
 			"status":  "error",
 			"message": "record not found"})

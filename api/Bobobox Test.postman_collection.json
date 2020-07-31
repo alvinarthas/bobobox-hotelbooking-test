@@ -1,0 +1,52 @@
+{
+	"info": {
+		"_postman_id": "72b8d8d2-bf6e-4f81-94d6-3a04b4cbaa1d",
+		"name": "Bobobox Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Search",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "check_in",
+							"value": "2020-09-01",
+							"type": "text"
+						},
+						{
+							"key": "check_out",
+							"value": "2020-09-05",
+							"type": "text"
+						},
+						{
+							"key": "max_people",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"search"
+					]
+				},
+				"description": "You can search the available room based on the date and even with how many people"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
